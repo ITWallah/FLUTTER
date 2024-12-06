@@ -1,0 +1,44 @@
+HEAD *******************************
+void initState() {
+    Future.delayed(Duration(seconds: 4), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => loginPage()),  // new page name
+      );
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+BODY ******************************
+return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 107, 106, 105),
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              width: 10,
+              height: 220,
+            ),
+            SizedBox(
+              width: 250,
+              height: 250,
+              child: Image.asset("assets/logo.png"),  //new logo image
+            ),
+            SizedBox(
+              width: 10,
+              height: 80,
+            ),
+            Text(
+              "Saving Goals",
+              style: TextStyle(
+                color: Colors.amber,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
