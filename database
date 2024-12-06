@@ -1,0 +1,43 @@
+class DatabaseMethods {
+  String userId = FirebaseAuth.instance.currentUser!.uid;
+
+INSERT*********
+  Future addGoalDetails(
+      Map<String, dynamic> goalInfoMap, String userId, String id) async {
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection("Goal")
+        .doc(id)
+        .set(goalInfoMap);
+  }
+
+SELECT********
+  Future<Stream<QuerySnapshot>> getGoalDetails() async {
+    return await FirebaseFirestore.instance
+        .collection("users")
+        .doc(userId)
+        .collection("Goal")
+        .snapshots();
+  }
+
+UPDATE********
+  Future updateGoalDetail(String id, Map<String, dynamic> updateInfo) async {
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection("Goal")
+        .doc(id)
+        .update(updateInfo);
+  }
+
+DELETE********
+  Future deleteGoalDetail(String id) async {
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection("Goal")
+        .doc(id)
+        .delete();
+  }
+}
