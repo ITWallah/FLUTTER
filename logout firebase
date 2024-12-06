@@ -1,0 +1,35 @@
+GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  title: Text("Logout!"),
+                  content: Text("Are you sure you want to logout?"),
+                  actions: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, "Cancel");
+                        },
+                        child: Text("Cancel")),
+                    TextButton(
+                        onPressed: () {
+                          FirebaseAuth.instance.signOut().then(
+                            (value) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => screenLogo()),
+                              );
+                            },
+                          );
+                        },
+                        child: Text("Ok")),
+                  ],
+                ),
+              );
+            },
+            child: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+          ),
